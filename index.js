@@ -71,7 +71,7 @@ function addOrder() {
         carts.textContent += order8;
     }
 
-    updateTotal(); // Update total after adding orders
+    updateTotal(); 
 }
 
 function updateTotal() {
@@ -86,8 +86,8 @@ function updateTotal() {
     total += parseFloat(qty7.value) * parseFloat(price7.textContent);
     total += parseFloat(qty8.value) * parseFloat(price8.textContent);
 
-    totalInput.value = total.toFixed(2); // Update total input field
-    calculateChange(); // Calculate change after updating total
+    totalInput.value = total.toFixed(2); 
+    calculateChange(); 
 }
 
 function calculateChange() {
@@ -96,7 +96,7 @@ function calculateChange() {
 
     if (!isNaN(total) && !isNaN(cash)) {
         var change = cash - total;
-        changeInput.value = change.toFixed(2); // Update change input field
+        changeInput.value = change.toFixed(2);
     } else {
         changeInput.value = "";
     }
