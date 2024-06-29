@@ -48,7 +48,7 @@
                         <h5 class="card-title">Blueberry Cheesecake</h5>
                         <p class="card-text">Price: ₱<span id="price1">200.00</span></p>
                         <input type="number" class="form-control mb-2" id="qty1" placeholder="Enter quantity">
-                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-primary addToCartBtn" data-product-id="1">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                         <h5 class="card-title">Cool Mint</h5>
                         <p class="card-text">Price: ₱<span id="price2">300.00</span></p>
                         <input type="number" class="form-control mb-2" id="qty2" placeholder="Enter quantity">
-                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-primary addToCartBtn" data-product-id="2">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@
                         <h5 class="card-title">Neapolitan</h5>
                         <p class="card-text">Price: ₱<span id="price3">270.00</span></p>
                         <input type="number" class="form-control mb-2" id="qty3" placeholder="Enter quantity">
-                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-primary addToCartBtn" data-product-id="3">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -84,7 +84,7 @@
                         <h5 class="card-title">Raspberry and White Chocolate</h5>
                         <p class="card-text">Price: ₱<span id="price4">190.00</span></p>
                         <input type="number" class="form-control mb-2" id="qty4" placeholder="Enter quantity">
-                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-primary addToCartBtn" data-product-id="4">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@
                         <h5 class="card-title">Strawberry Marshmallow</h5>
                         <p class="card-text">Price: ₱<span id="price5">250.00</span></p>
                         <input type="number" class="form-control mb-2" id="qty5" placeholder="Enter quantity">
-                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-primary addToCartBtn" data-product-id="5">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@
                         <h5 class="card-title">Triple Nut Caramel</h5>
                         <p class="card-text">Price: ₱<span id="price6">300.00</span></p>
                         <input type="number" class="form-control mb-2" id="qty6" placeholder="Enter quantity">
-                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-primary addToCartBtn" data-product-id="6">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -120,7 +120,7 @@
                         <h5 class="card-title">Pina Colada</h5>
                         <p class="card-text">Price: ₱<span id="price7">250.00</span></p>
                         <input type="number" class="form-control mb-2" id="qty7" placeholder="Enter quantity">
-                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-primary addToCartBtn" data-product-id="7">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -131,7 +131,7 @@
                         <h5 class="card-title">Vanilla Special</h5>
                         <p class="card-text">Price: ₱<span id="price8">200.00</span></p>
                         <input type="number" class="form-control mb-2" id="qty8" placeholder="Enter quantity">
-                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-primary addToCartBtn" data-product-id="8">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -143,7 +143,7 @@
                         <input type="text" class="form-control mb-2" id="total" readonly placeholder="Total">
                         <input type="number" class="form-control mb-2" id="cash" placeholder="Cash Tendered">
                         <input type="text" class="form-control mb-2" id="change" readonly placeholder="Change">
-                        <button class="btn btn-success w-100">Checkout</button>
+                        <button class="btn btn-success w-100 checkoutBtn">Checkout</button>
                     </div>
                 </div>
             </div>
@@ -151,5 +151,77 @@
     </div>
     
     <script src="index.js"></script>
+    <script>
+        // Initialize event listeners after DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            var addToCartButtons = document.querySelectorAll('.addToCartBtn');
+            var checkoutButton = document.querySelector('.checkoutBtn');
+            var quantities = document.querySelectorAll('[id^="qty"]');
+            var cashInput = document.getElementById("cash");
+
+            addToCartButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    addOrder();
+                });
+            });
+
+            checkoutButton.addEventListener('click', function() {
+                calculateChange();
+            });
+
+            // Add event listener for quantity inputs
+            quantities.forEach(function(input) {
+                input.addEventListener('keyup', function() {
+                    updateTotal();
+                });
+            });
+
+            // Function to add order to the cart
+            function addOrder() {
+                var carts = document.getElementById("carts");
+                carts.textContent = ""; // Clear carts textarea
+
+                for (let i = 1; i <= 8; i++) {
+                    var qtyInput = document.getElementById("qty" + i);
+                    var productTitle = document.querySelector("#qty" + i).closest(".card-body").querySelector(".card-title").innerText;
+                    var productPrice = document.getElementById("price" + i).innerText;
+
+                    if (qtyInput.value > 0) {
+                        var order = qtyInput.value.toString() + " pcs x " + productTitle + " - Php " + (qtyInput.value * productPrice).toFixed(2) + "\n";
+                        carts.textContent += order;
+                    }
+                }
+
+                updateTotal(); // Update total after adding order
+            }
+
+            // Function to update total
+            function updateTotal() {
+                var total = 0;
+
+                for (let i = 1; i <= 8; i++) {
+                    var qtyInput = document.getElementById("qty" + i);
+                    var productPrice = document.getElementById("price" + i).innerText;
+
+                    total += qtyInput.value * productPrice;
+                }
+
+                document.getElementById("total").value = total.toFixed(2); // Update total input
+            }
+
+            // Function to calculate change
+            function calculateChange() {
+                var total = parseFloat(document.getElementById("total").value);
+                var cash = parseFloat(cashInput.value);
+
+                if (!isNaN(total) && !isNaN(cash)) {
+                    var change = cash - total;
+                    document.getElementById("change").value = change.toFixed(2); // Display change if inputs are valid
+                } else {
+                    document.getElementById("change").value = ""; // Clear change input if invalid
+                }
+            }
+        });
+    </script>
 </body>
 </html>
