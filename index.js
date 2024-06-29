@@ -1,4 +1,4 @@
-// Product details in an array of objects for easier management
+// Array of products with their details
 var products = [
     { id: 1, name: "Blueberry Cheesecake", price: 200.00 },
     { id: 2, name: "Cool Mint", price: 300.00 },
@@ -26,7 +26,7 @@ cashInput.addEventListener("input", calculateChange);
 
 // Function to add orders to the cart
 function addOrder() {
-    carts.textContent = ""; // Clear cart content
+    carts.textContent = ""; // Clear previous cart content
 
     var total = 0;
 
