@@ -1,95 +1,50 @@
-var product1 = document.getElementById("product1");
-var qty1 = document.getElementById("qty1");
-var price1 = document.getElementById("price1");
-var product2 = document.getElementById("product2");
-var qty2 = document.getElementById("qty2");
-var price2 = document.getElementById("price2");
-var product3 = document.getElementById("product3");
-var qty3 = document.getElementById("qty3");
-var price3 = document.getElementById("price3");
-var product4 = document.getElementById("product4");
-var qty4 = document.getElementById("qty4");
-var price4 = document.getElementById("price4");
-var product5 = document.getElementById("product5");
-var qty5 = document.getElementById("qty5");
-var price5 = document.getElementById("price5");
-var product6 = document.getElementById("product6");
-var qty6 = document.getElementById("qty6");
-var price6 = document.getElementById("price6");
-var product7 = document.getElementById("product7");
-var qty7 = document.getElementById("qty7");
-var price7 = document.getElementById("price7");
-var product8 = document.getElementById("product8");
-var qty8 = document.getElementById("qty8");
-var price8 = document.getElementById("price8");
+// Product details in an array of objects for easier management
+var products = [
+    { id: 1, name: "Blueberry Cheesecake", price: 200.00 },
+    { id: 2, name: "Cool Mint", price: 300.00 },
+    { id: 3, name: "Neapolitan", price: 270.00 },
+    { id: 4, name: "Raspberry and White Chocolate", price: 190.00 },
+    { id: 5, name: "Strawberry Marshmallow", price: 250.00 },
+    { id: 6, name: "Triple Nut Caramel", price: 300.00 },
+    { id: 7, name: "Pina Colada", price: 250.00 },
+    { id: 8, name: "Vanilla Special", price: 200.00 }
+];
 
+// Selecting elements from the DOM
+var qtyInputs = document.querySelectorAll('[id^="qty"]');
 var carts = document.getElementById("carts");
 var totalInput = document.getElementById("total");
 var cashInput = document.getElementById("cash");
 var changeInput = document.getElementById("change");
 
+// Adding event listeners to quantity inputs
+qtyInputs.forEach(function(qtyInput) {
+    qtyInput.addEventListener("input", addOrder);
+});
+
+cashInput.addEventListener("input", calculateChange);
+
+// Function to add orders to the cart
 function addOrder() {
-    carts.textContent = "";
+    carts.textContent = ""; // Clear cart content
 
-    if (parseFloat(qty1.value) > 0) {
-        var order1 = qty1.value.toString() + " pcs x " + product1.textContent + " - Php " + (parseFloat(qty1.value) * parseFloat(price1.textContent)).toFixed(2) + "\n";
-        carts.textContent += order1;
-    }
-
-    if (parseFloat(qty2.value) > 0) {
-        var order2 = qty2.value.toString() + " pcs x " + product2.textContent + " - Php " + (parseFloat(qty2.value) * parseFloat(price2.textContent)).toFixed(2) + "\n";
-        carts.textContent += order2;
-    }
-
-    if (parseFloat(qty3.value) > 0) {
-        var order3 = qty3.value.toString() + " pcs x " + product3.textContent + " - Php " + (parseFloat(qty3.value) * parseFloat(price3.textContent)).toFixed(2) + "\n";
-        carts.textContent += order3;
-    }
-
-    if (parseFloat(qty4.value) > 0) {
-        var order4 = qty4.value.toString() + " pcs x " + product4.textContent + " - Php " + (parseFloat(qty4.value) * parseFloat(price4.textContent)).toFixed(2) + "\n";
-        carts.textContent += order4;
-    }
-
-    if (parseFloat(qty5.value) > 0) {
-        var order5 = qty5.value.toString() + " pcs x " + product5.textContent + " - Php " + (parseFloat(qty5.value) * parseFloat(price5.textContent)).toFixed(2) + "\n";
-        carts.textContent += order5;
-    }
-
-    if (parseFloat(qty6.value) > 0) {
-        var order6 = qty6.value.toString() + " pcs x " + product6.textContent + " - Php " + (parseFloat(qty6.value) * parseFloat(price6.textContent)).toFixed(2) + "\n";
-        carts.textContent += order6;
-    }
-
-    if (parseFloat(qty7.value) > 0) {
-        var order7 = qty7.value.toString() + " pcs x " + product7.textContent + " - Php " + (parseFloat(qty7.value) * parseFloat(price7.textContent)).toFixed(2) + "\n";
-        carts.textContent += order7;
-    }
-
-    if (parseFloat(qty8.value) > 0) {
-        var order8 = qty8.value.toString() + " pcs x " + product8.textContent + " - Php " + (parseFloat(qty8.value) * parseFloat(price8.textContent)).toFixed(2) + "\n";
-        carts.textContent += order8;
-    }
-
-    updateTotal(); 
-}
-
-function updateTotal() {
     var total = 0;
 
-    total += parseFloat(qty1.value) * parseFloat(price1.textContent);
-    total += parseFloat(qty2.value) * parseFloat(price2.textContent);
-    total += parseFloat(qty3.value) * parseFloat(price3.textContent);
-    total += parseFloat(qty4.value) * parseFloat(price4.textContent);
-    total += parseFloat(qty5.value) * parseFloat(price5.textContent);
-    total += parseFloat(qty6.value) * parseFloat(price6.textContent);
-    total += parseFloat(qty7.value) * parseFloat(price7.textContent);
-    total += parseFloat(qty8.value) * parseFloat(price8.textContent);
+    qtyInputs.forEach(function(qtyInput, index) {
+        var qty = parseFloat(qtyInput.value);
+        if (qty > 0) {
+            var product = products[index];
+            var order = qty + " pcs x " + product.name + " - Php " + (qty * product.price).toFixed(2) + "\n";
+            carts.textContent += order;
+            total += qty * product.price;
+        }
+    });
 
-    totalInput.value = total.toFixed(2); 
-    calculateChange(); 
+    totalInput.value = total.toFixed(2); // Update total
+    calculateChange(); // Recalculate change
 }
 
+// Function to calculate change
 function calculateChange() {
     var total = parseFloat(totalInput.value);
     var cash = parseFloat(cashInput.value);
@@ -101,13 +56,3 @@ function calculateChange() {
         changeInput.value = "";
     }
 }
-
-qty1.addEventListener("keyup", addOrder);
-qty2.addEventListener("keyup", addOrder);
-qty3.addEventListener("keyup", addOrder);
-qty4.addEventListener("keyup", addOrder);
-qty5.addEventListener("keyup", addOrder);
-qty6.addEventListener("keyup", addOrder);
-qty7.addEventListener("keyup", addOrder);
-qty8.addEventListener("keyup", addOrder);
-cashInput.addEventListener("input", calculateChange);
