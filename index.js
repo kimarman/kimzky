@@ -1,4 +1,3 @@
-// Product details in an array of objects for easier management
 var products = [
     { id: 1, name: "Blueberry Cheesecake", price: 200.00 },
     { id: 2, name: "Cool Mint", price: 300.00 },
@@ -10,23 +9,20 @@ var products = [
     { id: 8, name: "Vanilla Special", price: 200.00 }
 ];
 
-// Selecting elements from the DOM
 var qtyInputs = document.querySelectorAll('[id^="qty"]');
 var carts = document.getElementById("carts");
 var totalInput = document.getElementById("total");
 var cashInput = document.getElementById("cash");
 var changeInput = document.getElementById("change");
 
-// Adding event listeners to quantity inputs
 qtyInputs.forEach(function(qtyInput) {
     qtyInput.addEventListener("input", addOrder);
 });
 
 cashInput.addEventListener("input", calculateChange);
 
-// Function to add orders to the cart
 function addOrder() {
-    carts.textContent = ""; // Clear cart content
+    carts.textContent = "";
 
     var total = 0;
 
@@ -40,11 +36,10 @@ function addOrder() {
         }
     });
 
-    totalInput.value = total.toFixed(2); // Update total
-    calculateChange(); // Recalculate change
+    totalInput.value = total.toFixed(2);
+    calculateChange();
 }
 
-// Function to calculate change
 function calculateChange() {
     var total = parseFloat(totalInput.value);
     var cash = parseFloat(cashInput.value);
