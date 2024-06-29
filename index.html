@@ -3,123 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hindi Eto ChatGPT Promise</title>
+    <title>KIMz MilkShake Store</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
- <style>
+    <style>
         body {
             background-color: #f8f9fa;
-            font-family: 'Arial', sans-serif;
         }
-        h2 {
-            color: #343a40;
-            margin-top: 20px;
-        }
-        p {
-            color: #6c757d;
-        }
-        .hr {
-            border-top: 2px solid #343a40;
-            width: 50%;
-            margin: 20px auto;
-        }
-        .img-thumbnail {
-            margin-bottom: 10px;
-            transition: transform 0.2s;
-        }
-        .img-thumbnail:hover {
-            transform: scale(1.05);
-        }
-        .form-control {
-            margin-bottom: 15px;
-        }
-        #carts {
-            resize: none;
+        .card-img-top {
+            height: 300px;
+            object-fit: cover;
         }
         #total, #change {
             background-color: #e9ecef;
             font-weight: bold;
         }
-        .container {
-            padding-top: 20px;
-        }
-        .text-center {
-            margin-bottom: 20px;
-        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">KIMz MilkShake Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
         <div class="row">
-            <div class="col-12 text-center">
-                <h2>KIMz MilkShake Store</h2>
+            <div class="col-12 text-center mb-3">
+                <h2>Welcome to KIMz MilkShake Store</h2>
                 <p>By: KimArman Dulay Section: BSIT-3B</p>
                 <hr class="hr" />
             </div>
         </div>
-        <div class="row">
-            <div class="col-4 text-center">
-                <label id="product1">Blueberry Cheesecake</label>
-                <img src="Blueberry cheesecake.webp" style="width:400px;height:500px;" class="img-thumbnail"/><br>
-                <label for="product1" id="price1">200.00</label>
-                <input type="number" class="form-control" id="qty1" placeholder="Enter quantity"/><br>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card">
+                    <img src="Blueberry cheesecake.webp" class="card-img-top" alt="Blueberry Cheesecake">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Blueberry Cheesecake</h5>
+                        <p class="card-text">Price: ₱<span id="price1">200.00</span></p>
+                        <input type="number" class="form-control mb-2" id="qty1" placeholder="Enter quantity">
+                        <button class="btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
             </div>
-            <div class="col-4 text-center">
-                <label id="product2">Cool Mint</label>
-                <img src="Cool Mint.webp" style="width:400px;height:500px;" class="img-thumbnail"/><br>
-                <label for="product2" id="price2">300.00</label>
-                <input type="number" class="form-control" id="qty2" placeholder="Enter quantity"/><br>
+            <div class="col">
+                <div class="card">
+                    <img src="Cool Mint.webp" class="card-img-top" alt="Cool Mint">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Cool Mint</h5>
+                        <p class="card-text">Price: ₱<span id="price2">300.00</span></p>
+                        <input type="number" class="form-control mb-2" id="qty2" placeholder="Enter quantity">
+                        <button class="btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
             </div>
-            <div class="col-4 text-center">
-                <label id="product3">Neapolitan</label>
-                <img src="Neapolitan.webp" style="width:400px;height:500px;" class="img-thumbnail"/><br>
-                <label for="product3" id="price3">270.00</label>
-                <input type="number" class="form-control" id="qty3" placeholder="Enter quantity"/><br>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4 text-center">
-                <label id="product4">Raspberry and White Chocolate</label>
-                <img src="Raspberry and white chocolate.webp" style="width:400px;height:500px;" class="img-thumbnail"/><br>
-                <label for="product4" id="price4">190.00</label>
-                <input type="number" class="form-control" id="qty4" placeholder="Enter quantity"/><br>
-            </div>
-            <div class="col-4 text-center">
-                <label id="product5">Strawberry Marshmallow</label>
-                <img src="Strawberry marshmallow.webp" style="width:400px;height:500px;" class="img-thumbnail"/><br>
-                <label for="product5" id="price5">250.00</label>
-                <input type="number" class="form-control" id="qty5" placeholder="Enter quantity"/><br>
-            </div>
-            <div class="col-4 text-center">
-                <label id="product6">Triple Nut Caramel</label>
-                <img src="Triple nut caramel.webp" style="width:400px;height:500px;" class="img-thumbnail"/><br>
-                <label for="product6" id="price6">300.00</label>
-                <input type="number" class="form-control" id="qty6" placeholder="Enter quantity"/><br>
+            <div class="col">
+                <div class="card">
+                    <img src="Neapolitan.webp" class="card-img-top" alt="Neapolitan">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Neapolitan</h5>
+                        <p class="card-text">Price: ₱<span id="price3">270.00</span></p>
+                        <input type="number" class="form-control mb-2" id="qty3" placeholder="Enter quantity">
+                        <button class="btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-4 text-center">
-                <label id="product7">Pina Colada</label>
-                <img src="Pina colada.webp" style="width:400px;height:500px;" class="img-thumbnail"/><br>
-                <label for="product7" id="price7">250.00</label>
-                <input type="number" class="form-control" id="qty7" placeholder="Enter quantity"/><br>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+            <div class="col">
+                <div class="card">
+                    <img src="Raspberry and white chocolate.webp" class="card-img-top" alt="Raspberry and White Chocolate">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Raspberry and White Chocolate</h5>
+                        <p class="card-text">Price: ₱<span id="price4">190.00</span></p>
+                        <input type="number" class="form-control mb-2" id="qty4" placeholder="Enter quantity">
+                        <button class="btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
             </div>
-            <div class="col-4 text-center">
-                <label id="product8">Vanilla Special</label>
-                <img src="Vanilla special.webp" style="width:400px;height:500px;" class="img-thumbnail"/><br>
-                <label for="product8" id="price8">200.00</label>
-                <input type="number" class="form-control" id="qty8" placeholder="Enter quantity"/><br>
+            <div class="col">
+                <div class="card">
+                    <img src="Strawberry marshmallow.webp" class="card-img-top" alt="Strawberry Marshmallow">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Strawberry Marshmallow</h5>
+                        <p class="card-text">Price: ₱<span id="price5">250.00</span></p>
+                        <input type="number" class="form-control mb-2" id="qty5" placeholder="Enter quantity">
+                        <button class="btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
             </div>
-            <div class="col-4">
-                <label for="carts">Orders</label><br>
-                <textarea class="form-control" rows="29" id="carts" cols="200" readonly style="width:350px;height: 400px;font-size: 12px;"></textarea>
-                <input type="text" class="form-control border-0" id="total" readonly placeholder="Total"/>
-                <input type="number" class="form-control" id="cash" placeholder="Cash Tendered"/>
-                <input type="text" class="form-control border-0" id="change" readonly placeholder="Change"/>
+            <div class="col">
+                <div class="card">
+                    <img src="Triple nut caramel.webp" class="card-img-top" alt="Triple Nut Caramel">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Triple Nut Caramel</h5>
+                        <p class="card-text">Price: ₱<span id="price6">300.00</span></p>
+                        <input type="number" class="form-control mb-2" id="qty6" placeholder="Enter quantity">
+                        <button class="btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+            <div class="col">
+                <div class="card">
+                    <img src="Pina colada.webp" class="card-img-top" alt="Pina Colada">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Pina Colada</h5>
+                        <p class="card-text">Price: ₱<span id="price7">250.00</span></p>
+                        <input type="number" class="form-control mb-2" id="qty7" placeholder="Enter quantity">
+                        <button class="btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="Vanilla special.webp" class="card-img-top" alt="Vanilla Special">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Vanilla Special</h5>
+                        <p class="card-text">Price: ₱<span id="price8">200.00</span></p>
+                        <input type="number" class="form-control mb-2" id="qty8" placeholder="Enter quantity">
+                        <button class="btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <label for="carts" class="form-label">Orders</label>
+                        <textarea class="form-control mb-2" rows="10" id="carts" readonly></textarea>
+                        <input type="text" class="form-control mb-2" id="total" readonly placeholder="Total">
+                        <input type="number" class="form-control mb-2" id="cash" placeholder="Cash Tendered">
+                        <input type="text" class="form-control mb-2" id="change" readonly placeholder="Change">
+                        <button class="btn btn-success w-100">Checkout</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    
     <script src="index.js"></script>
 </body>
 </html>
