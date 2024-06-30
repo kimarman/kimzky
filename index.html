@@ -67,6 +67,18 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+        .card {
+    overflow: hidden;
+}
+
+.card img {
+    height: 200px; /* Adjust the height as needed */
+    object-fit: cover;
+}
+
+.badge {
+    font-size: 0.8rem; /* Adjust the font size as needed */
+}
     </style>
 </head>
 <body>
@@ -167,16 +179,25 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card">
-                    <img src="Vanilla special.webp" class="card-img-top" alt="Vanilla Special">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Vanilla Special<span class="badge rounded-pill text-bg-primary">POPULAR</span></h5>
-                        <p class="card-text">Price: ₱<span id="price8">200.00</span></p>
-                        <input type="number" class="form-control mb-2" id="qty8" placeholder="Enter quantity">
-                    </div>
-                </div>
-            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+    <div class="card h-100 position-relative">
+        <img src="Vanilla special.webp" class="card-img-top" alt="Vanilla Special">
+        <div class="position-absolute top-0 start-0 m-2">
+            <span class="badge bg-success">Buy 1 Take 1</span>
+        </div>
+        <div class="position-absolute top-0 end-0 m-2">
+            <span class="badge bg-warning">Best Seller</span>
+        </div>
+        <div class="card-body text-center">
+            <h5 class="card-title">
+                Vanilla Special
+                <span class="badge bg-primary">POPULAR</span>
+            </h5>
+            <p class="card-text">Price: ₱<span id="price8">200.00</span></p>
+            <input type="number" class="form-control mb-2" id="qty8" placeholder="Enter quantity" aria-label="Quantity">
+        </div>
+    </div>
+</div>
             <div class="col">
                 <div class="card">
                     <div class="card-body">
