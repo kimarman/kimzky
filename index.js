@@ -7,7 +7,8 @@ var products = [
     { id: 5, name: "Strawberry Marshmallow", price: 250.00 },
     { id: 6, name: "Triple Nut Caramel", price: 300.00 },
     { id: 7, name: "Pina Colada", price: 250.00 },
-    { id: 8, name: "Vanilla Special", price: 200.00 }
+    { id: 8, name: "Vanilla Special", price: 200.00 },
+    { id: 9, name: "Choc malt", price: 250.00 }
 ];
 
 // Selecting elements from the DOM
