@@ -198,6 +198,17 @@
         </div>
     </div>
 </div>
+             <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+            <div class="col">
+                <div class="card">
+                    <img src="Choc malt.webp.crdownload" class="card-img-top" alt="Choc malt">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Pina Colada<span class="badge rounded-pill text-bg-primary">POPULAR</span></h5>
+                        <p class="card-text">Price: ₱<span id="price7">250.00</span></p>
+                        <input type="number" class="form-control mb-2" id="qty7" placeholder="Enter quantity">
+                    </div>
+                </div>
+            </div>
             <div class="col">
                 <div class="card">
                     <div class="card-body">
@@ -237,7 +248,7 @@
                 var carts = document.getElementById("carts");
                 carts.value = ""; // Clear carts textarea
 
-                for (let i = 1; i <= 8; i++) {
+                for (let i = 1; i <= 9; i++) {
                     var qtyInput = document.getElementById("qty" + i);
                     var productTitle = document.querySelector("#qty" + i).closest(".card-body").querySelector(".card-title").innerText;
                     var productPrice = parseFloat(document.getElementById("price" + i).innerText);
@@ -254,7 +265,7 @@
             function updateTotal() {
                 var total = 0;
 
-                for (let i = 1; i <= 8; i++) {
+                for (let i = 1; i <= 9; i++) {
                     var qtyInput = document.getElementById("qty" + i);
                     var productPrice = parseFloat(document.getElementById("price" + i).innerText);
 
