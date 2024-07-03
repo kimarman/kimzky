@@ -82,7 +82,7 @@
     </style>
 </head>
 <body>
-    <!-- Navbar -->
+    
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -214,10 +214,10 @@
                 <div class="card">
                     <div class="card-body">
                         <label for="carts" class="form-label">Orders</label>
-                        <textarea class="form-control mb-3" rows="10" id="carts" readonly style="font-size: 12px; "></textarea>
-                        <input type="text" class="form-control mb-3" id="total" readonly placeholder="Total">
-                        <input type="number" class="form-control mb-3" id="cash" placeholder="Cash Tendered">
-                        <input type="text" class="form-control mb-3" id="change" readonly placeholder="Change">
+                        <textarea class="form-control mb-2" rows="10" id="carts" readonly style="font-size: 12px; "></textarea>
+                        <input type="text" class="form-control mb-2" id="total" readonly placeholder="Total">
+                        <input type="number" class="form-control mb-2" id="cash" placeholder="Cash Tendered">
+                        <input type="text" class="form-control mb-2" id="change" readonly placeholder="Change">
                         <button class="btn btn-success w-100 checkoutBtn">
                             <i class="fas fa-shopping-cart"></i> Checkout
                         </button>
@@ -228,7 +228,7 @@
 
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script>
-        // Initialize event listeners after DOM is loaded
+      
         document.addEventListener('DOMContentLoaded', function() {
             var quantities = document.querySelectorAll('[id^="qty"]');
             var checkoutButton = document.querySelector('.checkoutBtn');
@@ -259,7 +259,7 @@
                     }
                 }
 
-                updateTotal(); // Update total after adding order
+                updateTotal(); 
             }
 
             function updateTotal() {
@@ -272,7 +272,7 @@
                     total += qtyInput.value * productPrice;
                 }
 
-                document.getElementById("total").value = total.toFixed(2); // Update total input
+                document.getElementById("total").value = total.toFixed(2);
             }
 
             function calculateChange() {
@@ -280,7 +280,7 @@
                 var cash = parseFloat(cashInput.value);
                 var change = cash - total;
 
-                document.getElementById("change").value = change.toFixed(2); // Update change input
+                document.getElementById("change").value = change.toFixed(2); 
             }
         });
     </script>
